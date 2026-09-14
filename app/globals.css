@@ -88,7 +88,7 @@ button:disabled {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url("/noise.svg") 0 0 / 95px 95px;
+  background: url("/images/noise.svg") 0 0 / 95px 95px;
   mix-blend-mode: screen;
   opacity: 0.3;
   animation: noise-drift 0.19s steps(1, end) infinite;
@@ -164,7 +164,7 @@ button:disabled {
 .noise-grain {
   position: absolute;
   inset: -25%;
-  background: url("/noise.svg") repeat;
+  background: url("/images/noise.svg") repeat;
   background-size: 180px 180px;
   opacity: 0.65;
   animation: noise-drift 0.24s steps(1, end) infinite;

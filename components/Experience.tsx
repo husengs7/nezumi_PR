@@ -36,6 +36,29 @@ function Popup({
     </article>
   );
 }
+function RetroAd({ ad }: { ad: (typeof site.ads)[number] }) {
+  return (
+    <article className={`retro-ad ${ad.theme}`}>
+      <div className="ad-top">
+        <span>PR　{ad.label}</span>
+        <button
+          type="button"
+          className="ad-close"
+          aria-label="閉じる（演出用・動作しません）"
+        >
+          ×
+        </button>
+      </div>
+      <div className="ad-picture">
+        <img src={ad.image} alt={ad.alt} width={ad.width} height={ad.height} />
+        <span className="ad-sticker">受信中!</span>
+      </div>
+      <p className="ad-headline">{ad.headline}</p>
+      <span className="ad-action">{ad.action}</span>
+      <p className="ad-note">{ad.note}</p>
+    </article>
+  );
+}
 export default function Experience() {
   const [phase, setPhase] = useState<Phase>("intro");
   const [count, setCount] = useState(0);
@@ -175,7 +198,17 @@ export default function Experience() {
             <p className="small-cross" aria-hidden="true">
               † ───────────── † ───────────── †
             </p>
-            <h1>{site.homepage.title}</h1>
+            <h1 className="logo-heading">
+              <span className="logo-crop">
+                <img
+                  className="title-image"
+                  src={site.homepage.titleImage}
+                  alt={site.homepage.title}
+                  width={2224}
+                  height={1668}
+                />
+              </span>
+            </h1>
             <p className="site-subtitle">{site.band} / electronic sanctuary</p>
             <p className="welcome">{site.homepage.welcome}</p>
             <p className="visitor">
@@ -269,6 +302,9 @@ export default function Experience() {
                 <p className="enter-caption">[ enter the sanctuary ]</p>
                 <p className="join-note">{site.intro.note}</p>
               </section>
+              <aside className="inline-ad" aria-label="広告風の演出">
+                {site.ads[0] && <RetroAd ad={site.ads[0]} />}
+              </aside>
               <section className="old-section" id="news">
                 <h2>■ 更新履歴 / what's new</h2>
                 <dl className="updates">
@@ -288,6 +324,9 @@ export default function Experience() {
                 <p>{site.homepage.diary}</p>
                 <span>続きを読むことはできません。</span>
               </section>
+              <aside className="inline-ad" aria-label="広告風の演出">
+                {site.ads[1] && <RetroAd ad={site.ads[1]} />}
+              </aside>
               <section className="old-section" id="guestbook">
                 <h2>■ 残された書き込み / read only</h2>
                 {site.homepage.guestbook.map((post, i) => (
@@ -316,19 +355,11 @@ export default function Experience() {
           </footer>
         </div>
       </div>
-      <aside className="desktop-messages" aria-label="受信メッセージ">
-        <p>受信されたメッセージ (3)</p>
-        <Popup data={popups[0]} onClick={begin} className="initial first" />
-        <Popup
-          data={popups[1 % popups.length]}
-          onClick={begin}
-          className="initial second"
-        />
-        <Popup
-          data={popups[2 % popups.length]}
-          onClick={begin}
-          className="initial third"
-        />
+      <aside className="desktop-messages" aria-label="広告風の演出">
+        <p>ADVERTISEMENT / 受信中</p>
+        {site.ads.map((ad) => (
+          <RetroAd ad={ad} key={ad.image} />
+        ))}
         <pre className="desktop-log">{site.transmission.join("\n")}</pre>
       </aside>
       {(phase === "overload" || phase === "collapse") && (

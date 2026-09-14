@@ -9,7 +9,7 @@
   gap: 36px;
   align-items: start;
   color: #a9a39e;
-  background: #090909 url("/transmission.svg") center top / 1440px 1000px
+  background: #090909 url("/images/transmission.svg") center top / 1440px 1000px
     repeat-y;
 }
 .experience::after {
@@ -38,7 +38,7 @@
 }
 .old-header {
   text-align: center;
-  padding-top: 13px;
+  padding-top: 5px;
 }
 .last-update {
   text-align: right;
@@ -48,7 +48,7 @@
 .small-cross {
   color: #785159;
   font-size: 11px;
-  margin: 26px 0 17px;
+  margin: 16px 0 6px;
 }
 .old-header h1 {
   font-family: "MS PMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
@@ -66,13 +66,44 @@
   letter-spacing: 3px;
   color: #98727a;
 }
+.old-header .logo-heading {
+  width: 740px;
+  max-width: 100%;
+  margin: 4px auto 0;
+  padding: 12px 0;
+  background: radial-gradient(
+    ellipse closest-side,
+    #eee9dd 55%,
+    #d7d1c4cc 72%,
+    #bdb6a64d 86%,
+    transparent 100%
+  );
+}
+.logo-crop {
+  display: block;
+  width: 360px;
+  max-width: 86%;
+  aspect-ratio: 1253 / 894;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.title-image {
+  display: block;
+  position: absolute;
+  width: 177.494%;
+  max-width: none;
+  height: auto;
+  left: -41.58%;
+  top: calc(-43.065% - 20px);
+}
 .welcome {
   font-size: 10px;
-  margin-top: 25px;
+  margin-top: 14px;
 }
 .visitor {
   font-size: 10px;
-  margin: 17px 0 8px;
+  margin: 10px 0 5px;
 }
 .counter {
   display: inline-flex;
@@ -96,7 +127,7 @@
 .ticker {
   border-top: 1px solid #544147;
   border-bottom: 1px solid #544147;
-  margin-top: 20px;
+  margin-top: 12px;
   padding: 5px 0;
   color: #ba9297;
   overflow: hidden;
@@ -218,7 +249,7 @@
   border: 1px solid #554548;
   background:
     radial-gradient(ellipse at 53% 50%, #5b19294d, transparent 60%),
-    #080809 url("/transmission.svg") 70% 40% / 660px 460px;
+    #080809 url("/images/transmission.svg") 70% 40% / 660px 460px;
 }
 .reception-image::after {
   content: "";
@@ -590,5 +621,127 @@
   }
   .storm-popup {
     max-width: 80vw;
+  }
+}
+
+/* 操作や外部遷移を行わない、昔の広告バナー風の装飾。 */
+.retro-ad {
+  width: 100%;
+  position: relative;
+  margin: 0 0 28px;
+  border: 3px ridge #e67883;
+  background: #380718;
+  box-shadow:
+    3px 4px 0 #000,
+    0 0 0 1px #f5ca56;
+  text-align: center;
+  color: #fff5c4;
+}
+.ad-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 3px 2px 6px;
+  background: #b1143b;
+  font-size: 9px;
+}
+.ad-close {
+  padding: 0;
+  width: 17px;
+  height: 17px;
+  border: 2px outset #eee;
+  background: #c7c7c7;
+  color: #222;
+  font:
+    bold 13px/13px Arial,
+    sans-serif;
+}
+.ad-close:active {
+  border-style: inset;
+}
+.ad-picture {
+  position: relative;
+  border-bottom: 2px solid #ffd947;
+}
+.ad-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ad-sticker {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  padding: 3px 5px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #9c0032;
+  background: #fff34a;
+  border: 1px solid #fff;
+}
+.ad-headline {
+  margin: 0;
+  padding: 9px 5px;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.5;
+  text-shadow: 2px 2px #950327;
+  background: repeating-linear-gradient(0deg, #790b2b 0 2px, #690725 2px 4px);
+}
+.ad-action {
+  display: block;
+  margin: 0 7px;
+  padding: 7px 2px;
+  border: 2px outset #fff19b;
+  background: linear-gradient(#fff4a6, #efb623);
+  color: #850525;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.ad-note {
+  margin: 7px 3px;
+  font-size: 8px;
+}
+.retro-ad.music {
+  border-color: #af86df;
+  background: #220c37;
+}
+.music .ad-top {
+  background: #592486;
+}
+.music .ad-headline {
+  background: repeating-linear-gradient(0deg, #40155d 0 2px, #310c50 2px 4px);
+  text-shadow: 2px 2px #481479;
+}
+@media (max-width: 760px) {
+  .retro-ad {
+    width: 225px;
+    max-width: 90%;
+    margin-left: 5%;
+  }
+  .retro-ad.music {
+    margin-left: auto;
+    margin-right: 5%;
+  }
+}
+.inline-ad {
+  display: none;
+}
+@media (max-width: 760px) {
+  .desktop-messages {
+    display: none;
+  }
+  .inline-ad {
+    display: block;
+    margin: 24px 0;
+  }
+  .inline-ad .retro-ad {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .inline-ad .ad-headline {
+    font-size: 14px;
   }
 }

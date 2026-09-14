@@ -9,6 +9,30 @@ export type PopMessage = {
 };
 export const site = {
   band: "ねずみ幸福論",
+  ads: [
+    {
+      image: "/images/sky.jpg",
+      alt: "夕空と鉄塔の下に立つ人物",
+      width: 4032,
+      height: 3024,
+      label: "緊急受信",
+      headline: "あなたへの信号、届いています。",
+      action: "今すぐ接続 ▶",
+      note: "接続無料・いつでも受信中",
+      theme: "signal",
+    },
+    {
+      image: "/images/stdio.jpg",
+      alt: "ねずみ幸福論の演奏風景",
+      width: 1027,
+      height: 676,
+      label: "音源配信予告",
+      headline: "この音を、まだ知らないあなたへ。",
+      action: "音量を上げて確認 ▶",
+      note: "ねずみ幸福論 / DIGITAL RELEASE",
+      theme: "music",
+    },
+  ],
   release: "救済ノイズ",
   englishTitle: "SALVATION NOISE",
   releaseDate: "2026.10.01",
@@ -16,6 +40,7 @@ export const site = {
   description: "信じなくていい。ただ、聴いてほしい。",
   homepage: {
     title: "ねずみ幸福論の電子礼拝室",
+    titleImage: "/images/IMG_2037.png",
     subtitle: "the unofficial sanctuary / since 1998 (fiction)",
     counter: "00001998",
     welcome: "ようこそ。あなたが来ることは、ずっと前から知っていました。",
