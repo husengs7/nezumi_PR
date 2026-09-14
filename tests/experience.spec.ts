@@ -61,3 +61,16 @@ test("デスクトップ表示とスキップ", async ({ page }) => {
     fullPage: true,
   });
 });
+
+test("再読み込みとアンカー付きURLでも先頭を表示し、ページ内リンクは使える", async ({
+  page,
+}) => {
+  await page.goto("/#diary");
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await page.getByRole("link", { name: "管理人の記憶", exact: true }).click();
+  await expect
+    .poll(() => page.evaluate(() => window.scrollY))
+    .toBeGreaterThan(0);
+  await page.reload();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+});

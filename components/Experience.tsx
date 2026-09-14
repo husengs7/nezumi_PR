@@ -65,6 +65,28 @@ export default function Experience() {
   const [reduced, setReduced] = useState(false);
   const releaseHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    // 初回URLに残ったアンカー位置ではなく、必ずページ先頭を表示する。
+    if (window.location.hash) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        window.location.pathname + window.location.search,
+      );
+    }
+    const resetScroll = () =>
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    resetScroll();
+    const frame = window.requestAnimationFrame(resetScroll);
+    window.addEventListener("pageshow", resetScroll);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("pageshow", resetScroll);
+      window.history.scrollRestoration = previous;
+    };
+  }, []);
+  useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReduced(media.matches);
     update();
@@ -93,7 +115,11 @@ export default function Experience() {
     return () => window.clearTimeout(timer);
   }, [phase]);
   useEffect(() => {
-    if (phase === "release") releaseHeading.current?.focus();
+    if (phase === "intro" || phase === "release") {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+    if (phase === "release")
+      releaseHeading.current?.focus({ preventScroll: true });
   }, [phase]);
   function begin() {
     setCount(0);
@@ -226,6 +252,25 @@ export default function Experience() {
             <p className="counter-note">
               ※ カウンターは止まっています。キリ番の報告は不要です。
             </p>
+            <section className="telephone-banner" aria-label="電話案内の演出">
+              <div className="telephone-heading">
+                <span aria-hidden="true">☎</span>
+                <h2>{site.telephone.heading}</h2>
+              </div>
+              <p
+                className="telephone-number"
+                aria-label="電話番号は途中から文字化けしていて読めません"
+              >
+                <span aria-hidden="true">
+                  {site.telephone.prefix}
+                  <span className="telephone-corrupt">
+                    {site.telephone.broken}
+                  </span>
+                </span>
+              </p>
+              <p className="telephone-note">{site.telephone.note}</p>
+              <p className="telephone-status">{site.telephone.status}</p>
+            </section>
           </header>
           <div className="ticker">
             <div>

@@ -38,6 +38,13 @@ export const site = {
   releaseDate: "2026.10.01",
   releaseType: "1ST DIGITAL SINGLE",
   description: "信じなくていい。ただ、聴いてほしい。",
+  telephone: {
+    heading: "今すぐお電話を！",
+    prefix: "0120-",
+    broken: "03縺ｿ-莠ｺ�†",
+    note: "年中無休・深夜受付中 ／ あなたの声を、お待ちしています。",
+    status: "回線状況：応答がありません",
+  },
   homepage: {
     title: "ねずみ幸福論の電子礼拝室",
     titleImage: "/images/IMG_2037.png",
