@@ -65,10 +65,92 @@ button:disabled {
   border: 2px outset #ddd;
   font-size: 11px;
 }
-.collapse .storm-popup,
 .collapse .intro-scene,
 .collapse .desktop-messages {
   animation: signal-loss var(--collapse-duration) linear forwards;
+}
+.distortion-filter {
+  position: absolute;
+  pointer-events: none;
+}
+.collapse .popup {
+  filter: url(#popup-distortion);
+  animation: popup-tear 0.32s steps(1, end) var(--distort-delay, 0ms) infinite;
+  text-shadow:
+    -2px 0 #ff6969,
+    2px 0 #92c7cc;
+}
+.collapse .popup-storm {
+  animation: popup-dissolve var(--collapse-duration) linear forwards;
+}
+.collapse .popup::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("/noise.svg") 0 0 / 95px 95px;
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  animation: noise-drift 0.19s steps(1, end) infinite;
+}
+@keyframes popup-tear {
+  0% {
+    transform: translateX(-3px) scaleX(1.02);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 31%,
+      88% 31%,
+      88% 35%,
+      100% 35%,
+      100% 100%,
+      0 100%,
+      0 70%,
+      9% 70%,
+      9% 64%,
+      0 64%
+    );
+  }
+  25% {
+    transform: translateX(9px) scaleX(0.97);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 60%,
+      92% 60%,
+      92% 67%,
+      100% 67%,
+      100% 100%,
+      0 100%
+    );
+  }
+  50% {
+    transform: translateX(-12px) scaleX(1.06);
+    clip-path: inset(0 0 0 0);
+  }
+  75% {
+    transform: translateX(5px) scaleX(1.01);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 45%,
+      13% 45%,
+      13% 38%,
+      0 38%
+    );
+  }
+}
+@keyframes popup-dissolve {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  85%,
+  100% {
+    opacity: 0;
+  }
 }
 .signal-noise {
   position: fixed;
@@ -261,7 +343,10 @@ button:disabled {
   0% {
     opacity: 0;
   }
-  25%,
+  50% {
+    opacity: 0.18;
+  }
+  80%,
   100% {
     opacity: 1;
   }

@@ -359,6 +359,7 @@ export default function Experience() {
                   {
                     left: `${(i * 37 + 8) % 76}%`,
                     top: `${(i * 29 + 3) % 72}%`,
+                    "--distort-delay": `${-(i % 5) * 47}ms`,
                     zIndex: i,
                   } as CSSProperties
                 }
@@ -374,6 +375,43 @@ export default function Experience() {
             音源へスキップ ↗
           </button>
         </>
+      )}
+      {phase === "collapse" && (
+        <svg
+          className="distortion-filter"
+          aria-hidden="true"
+          width="0"
+          height="0"
+        >
+          <defs>
+            <filter
+              id="popup-distortion"
+              x="-30%"
+              y="-10%"
+              width="160%"
+              height="120%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feTurbulence
+                type="turbulence"
+                baseFrequency="0.004 0.16"
+                numOctaves="1"
+                seed="7"
+                result="interference"
+              />
+              <feComponentTransfer in="interference" result="horizontal-noise">
+                <feFuncA type="linear" slope="0" intercept="0.5" />
+              </feComponentTransfer>
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="horizontal-noise"
+                scale="42"
+                xChannelSelector="R"
+                yChannelSelector="A"
+              />
+            </filter>
+          </defs>
+        </svg>
       )}
       {phase === "collapse" && (
         <div className="signal-noise" aria-hidden="true">
