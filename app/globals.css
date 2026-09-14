@@ -1,0 +1,315 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    "MS PGothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", monospace;
+  font-size: 12px;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 0;
+}
+a {
+  color: #9290c6;
+  text-decoration: underline;
+}
+a:visited {
+  color: #ad83aa;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 1px dotted #e4d4c4;
+  outline-offset: 4px;
+}
+button:disabled {
+  cursor: wait;
+}
+::selection {
+  color: white;
+  background: #75434b;
+}
+.popup-storm {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+.storm-popup {
+  position: absolute;
+  animation: popup-in 0.18s ease-out backwards;
+}
+.overload-status {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  padding: 9px 12px;
+  z-index: 100;
+  font: 11px monospace;
+  max-width: calc(100% - 30px);
+  color: #e0c1c1;
+  background: #30171b;
+  border: 1px solid #835456;
+}
+.emergency-skip {
+  position: fixed;
+  right: 12px;
+  top: 12px;
+  z-index: 101;
+  padding: 8px 12px;
+  background: #c0beb2;
+  color: #222;
+  border: 2px outset #ddd;
+  font-size: 11px;
+}
+.collapse .storm-popup,
+.collapse .intro-scene,
+.collapse .desktop-messages {
+  animation: signal-loss var(--collapse-duration) linear forwards;
+}
+.signal-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  pointer-events: none;
+  overflow: hidden;
+  background: #dedede;
+  animation: noise-envelope var(--collapse-duration) linear both;
+}
+.noise-grain {
+  position: absolute;
+  inset: -25%;
+  background: url("/noise.svg") repeat;
+  background-size: 180px 180px;
+  opacity: 0.65;
+  animation: noise-drift 0.24s steps(1, end) infinite;
+}
+.noise-tracking {
+  position: absolute;
+  inset: -25% 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, #3332 3px 4px),
+    linear-gradient(
+      0deg,
+      transparent 40%,
+      #5553 44%,
+      #fff8 47%,
+      transparent 51%
+    );
+  animation: tracking-drift 0.55s steps(4, end) infinite;
+}
+.signal-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: noise-whiteout var(--collapse-duration) linear both;
+}
+.experience.collapse {
+  background: white;
+}
+.release-page {
+  color: #292929;
+  background: white;
+  min-height: 100svh;
+  padding: 65px 20px;
+  text-align: center;
+  animation: reveal 0.9s ease-out;
+  font-family: "MS PMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+.release-header {
+  max-width: 440px;
+  margin: 0 auto 55px;
+  font: 11px monospace;
+}
+.release-header a {
+  display: block;
+  color: #222;
+  letter-spacing: 5px;
+  margin-bottom: 12px;
+}
+.release-header a span {
+  font-size: 8px;
+  vertical-align: top;
+}
+.release-header > span {
+  font-size: 10px;
+  color: #777;
+}
+.release-layout {
+  max-width: 440px;
+  margin: auto;
+}
+.release-info .eyebrow {
+  font: 10px monospace;
+}
+.release-info h1 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  margin: 30px 0;
+}
+.release-info h1:focus {
+  outline: none;
+}
+.release-description {
+  font-size: 12px;
+  margin: 25px 0 40px;
+}
+.player-placeholder {
+  border: 1px solid #bbb;
+  background: #f4f4f4;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left;
+  font: 11px monospace;
+}
+.record {
+  font-size: 25px;
+}
+.player-placeholder strong {
+  font-weight: 400;
+}
+.player-placeholder div span {
+  display: block;
+  color: #666;
+  margin-top: 6px;
+}
+.sound-bars {
+  margin-left: auto;
+}
+.music-embed {
+  width: 100%;
+  border: 0;
+}
+.platforms {
+  margin: 25px 0;
+  line-height: 2.5;
+  font:
+    12px/2.5 "Times New Roman",
+    serif;
+}
+.platforms a,
+.platforms > div {
+  display: block;
+}
+.platforms a {
+  color: #0000a0;
+}
+.platforms span {
+  margin-left: 12px;
+  color: #777;
+  font: 9px monospace;
+}
+.release-footer {
+  margin: 60px auto 0;
+  max-width: 440px;
+  border-top: 1px solid #bbb;
+  padding-top: 18px;
+  font-size: 9px;
+}
+.release-footer button {
+  display: block;
+  margin: 24px auto;
+  border: 0;
+  background: none;
+  color: #0000a0;
+  text-decoration: underline;
+  font-size: 11px;
+}
+.noscript-note {
+  color: #ddd;
+  padding: 20px;
+  text-align: center;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes signal-loss {
+  0% {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+  35% {
+    opacity: 0.6;
+    filter: grayscale(1) contrast(1.4);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    filter: grayscale(1) blur(2px);
+  }
+}
+@keyframes noise-envelope {
+  0% {
+    opacity: 0;
+  }
+  25%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes noise-whiteout {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes noise-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-7%, 5%);
+  }
+  50% {
+    transform: translate(4%, -8%);
+  }
+  75% {
+    transform: translate(-5%, -3%);
+  }
+}
+@keyframes tracking-drift {
+  from {
+    transform: translateY(-12%);
+  }
+  to {
+    transform: translateY(12%);
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
