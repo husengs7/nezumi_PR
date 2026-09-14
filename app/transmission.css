@@ -3,9 +3,14 @@
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  padding: 38px 260px 65px 25px;
+  padding: 25px 4% 55px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 225px;
+  gap: 36px;
+  align-items: start;
   color: #a9a39e;
-  background: #090909 url("/transmission.svg") center top / 1440px 1000px repeat-y;
+  background: #090909 url("/transmission.svg") center top / 1440px 1000px
+    repeat-y;
 }
 .experience::after {
   content: "";
@@ -20,47 +25,8 @@
   );
 }
 .intro-scene {
-  width: 680px;
-  max-width: 100%;
-  margin: 0 auto;
-  border: 2px outset #88857c;
-  background: #101011;
-  box-shadow: 7px 9px 0 #0008;
-}
-.browser-chrome {
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(90deg, #34202a, #64615c);
-  color: #d8d6c7;
-  margin: 2px;
-  padding: 4px 6px;
-  font-size: 11px;
-}
-.browser-menu {
-  background: #ada99e;
-  color: #222;
-  padding: 5px 8px;
-  font-size: 10px;
-  border-bottom: 1px solid #727065;
-}
-.address-bar {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: #ada99e;
-  color: #222;
-  padding: 4px 6px;
-  font-size: 10px;
-}
-.address-bar code {
-  background: #dad8ce;
-  border: 2px inset #ccc;
-  flex: 1;
+  width: 100%;
   min-width: 0;
-  padding: 3px;
-  font: 10px monospace;
-  overflow: hidden;
-  white-space: nowrap;
 }
 .homepage-body {
   padding: 0 20px;
@@ -414,19 +380,9 @@
 .webring {
   margin: 16px 0;
 }
-.browser-status {
-  display: flex;
-  justify-content: space-between;
-  background: #aaa69a;
-  color: #303029;
-  border-top: 2px groove #ccc;
-  padding: 3px 6px;
-  font-size: 9px;
-}
 .desktop-messages {
-  position: absolute;
-  left: calc(50% + 248px);
-  top: 190px;
+  position: relative;
+  margin-top: 150px;
   width: 225px;
 }
 .desktop-messages > p {
@@ -512,19 +468,13 @@
 .collapse .desktop-messages {
   pointer-events: none;
 }
-@media (min-width: 1500px) {
-  .desktop-messages {
-    left: calc(50% + 255px);
-  }
-}
 @media (max-width: 1100px) {
   .experience {
-    padding-left: 18px;
-    padding-right: 245px;
+    padding: 20px 18px 45px;
+    grid-template-columns: minmax(0, 1fr) 205px;
+    gap: 22px;
   }
   .desktop-messages {
-    left: auto;
-    right: 18px;
     width: 205px;
   }
   .desktop-messages .popup {
@@ -547,6 +497,7 @@
 @media (max-width: 760px) {
   .experience {
     padding: 14px 8px 40px;
+    display: block;
   }
   .desktop-messages {
     position: relative;
@@ -626,9 +577,6 @@
   }
   .visitor {
     line-height: 2.2;
-  }
-  .browser-menu {
-    font-size: 8px;
   }
   .last-update {
     font-size: 8px;

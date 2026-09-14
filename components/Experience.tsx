@@ -166,18 +166,6 @@ export default function Experience() {
       }
     >
       <div className="intro-scene">
-        <div className="browser-chrome" aria-hidden="true">
-          <span>無題のページ - {site.band} Navigator</span>
-          <span>_ □ ×</span>
-        </div>
-        <div className="browser-menu" aria-hidden="true">
-          ファイル(F)　編集(E)　表示(V)　移動(G)　お気に入り(A)
-        </div>
-        <div className="address-bar">
-          <span>場所：</span>
-          <code>https://nezumi-kofukuron.local/~salvation/index.html</code>
-          <span aria-hidden="true">↵</span>
-        </div>
         <div className="homepage-body">
           <header className="old-header">
             <p className="last-update">
@@ -326,10 +314,6 @@ export default function Experience() {
               Copyright © {site.band}. All memories reserved.
             </p>
           </footer>
-        </div>
-        <div className="browser-status">
-          <span>ドキュメント：読み込み完了</span>
-          <span>接続：不明</span>
         </div>
       </div>
       <aside className="desktop-messages" aria-label="受信メッセージ">
