@@ -76,6 +76,8 @@ export const site = {
     "> awaiting response_",
   ],
   intro: {
+    videoUrl: "https://www.youtube-nocookie.com/embed/AX9SdpLbEs0",
+    videoTitle: "ねずみ幸福論 — YouTube動画",
     eyebrow: "あなたは、ここにいますか。",
     title: ["救いは、", "爆音で。"],
     body: "誰もいない部屋で、接続音だけがしている。\n画面の向こうから、あなたを呼んでいる。",

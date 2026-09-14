@@ -315,25 +315,15 @@ export default function Experience() {
             <div className="old-content">
               <section className="entrance" id="entrance">
                 <p className="warning-text">{site.homepage.notice}</p>
-                <div
-                  className="reception-image"
-                  role="img"
-                  aria-label="電線に囲まれた赤い受信信号"
-                >
-                  <div className="reception-ring" />
-                  <span className="image-coordinates">
-                    REC 03:33:07
-                    <br />
-                    CH_07 / NO INPUT
-                  </span>
-                  <span className="image-message">
-                    あなたは、
-                    <br />
-                    ここにいますか。
-                  </span>
-                  <span className="image-bottom">
-                    connection lost........................
-                  </span>
+                <div className="entrance-video">
+                  <iframe
+                    src={site.intro.videoUrl}
+                    title={site.intro.videoTitle}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    loading="lazy"
+                  />
                 </div>
                 <p className="entrance-poem">{site.intro.body}</p>
                 <p className="salvation-copy">{site.intro.title.join("")}</p>
