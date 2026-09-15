@@ -235,7 +235,6 @@ export default function Experience() {
                 />
               </span>
             </h1>
-            <p className="site-subtitle">{site.band} / electronic sanctuary</p>
             <p className="welcome">{site.homepage.welcome}</p>
             <p className="visitor">
               あなたは{" "}
