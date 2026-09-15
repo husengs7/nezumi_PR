@@ -319,19 +319,36 @@
   margin: 14px 0;
 }
 .enter-link {
-  border: 0;
-  background: none;
-  color: #b4a2ca;
-  text-decoration: underline;
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  margin: 20px auto 12px;
+  border: 4px outset #e4aa83;
+  outline: 1px solid #e9cb89;
+  outline-offset: 3px;
+  background: repeating-linear-gradient(0deg, #a51f38 0 2px, #90192f 2px 4px);
+  color: #fff2be;
+  text-shadow: 2px 2px #450613;
+  box-shadow: 4px 5px 0 #080304, 0 0 20px #af25474d;
   font:
-    20px "MS PMincho",
+    bold 25px "MS PMincho",
     "Yu Mincho",
     serif;
   letter-spacing: 7px;
-  padding: 7px 15px;
+  padding: 17px 12px;
 }
 .enter-link:hover {
-  color: #e0bec5;
+  background: #bc3049;
+  color: #fff;
+  box-shadow: 4px 5px 0 #080304, 0 0 25px #cf345a80;
+}
+.enter-link:active {
+  border-style: inset;
+  box-shadow: 1px 2px 0 #080304;
+}
+.enter-link:disabled {
+  font-size: 17px;
+  letter-spacing: 2px;
 }
 .enter-caption {
   font:
