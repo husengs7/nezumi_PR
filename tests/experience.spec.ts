@@ -8,7 +8,7 @@ test("増殖して崩壊した後に音源を表示し、再体験できる", as
   await expect(page.locator(".storm-popup").first()).toBeVisible();
   await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
   await expect(
-    page.getByRole("heading", { name: "救済ノイズ", exact: true }),
+    page.getByRole("heading", { name: "その街であなたは...", exact: true }),
   ).toBeFocused();
   await page.getByRole("button", { name: "もう一度、勧誘される" }).click();
   await expect(page.getByRole("button", { name: "入信する" })).toBeVisible();

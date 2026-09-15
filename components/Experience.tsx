@@ -146,7 +146,6 @@ export default function Experience() {
             <h1 tabIndex={-1} ref={releaseHeading}>
               {site.release}
             </h1>
-            <p className="release-description">{site.description}</p>
             {site.embed.url ? (
               <iframe
                 className="music-embed"
@@ -240,7 +239,7 @@ export default function Experience() {
               あなたは{" "}
               <span
                 className="counter"
-                aria-label={`訪問者番号 ${site.homepage.counter}`}
+                aria-label="カウンター故障・訪問者数は表示できません"
               >
                 {site.homepage.counter.split("").map((digit, i) => (
                   <b key={i}>{digit}</b>
