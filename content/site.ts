@@ -32,11 +32,23 @@ export const site = {
       note: "ねずみ幸福論 / DIGITAL RELEASE",
       theme: "music",
     },
+    {
+      image: "/images/gennana-ramen.png",
+      alt: "昔ながらのラーメン店のカウンターに置かれた、湯気の立つ醤油ラーメン",
+      width: 1536,
+      height: 1024,
+      label: "ゲンナナらーめん",
+      headline: "その空腹に至極に一杯",
+      action: "一杯、いっとく？ ▶",
+      note: "スープまで、信じてほしい。／ ゲンナナらーめん",
+      theme: "ramen",
+    },
   ],
   release: "その街であなたは...",
   releaseDate: "2026.09.21",
   releaseType: "1ST DIGITAL SINGLE",
-  description: "ねずみ幸福論 1stシングル「その街であなたは...」配信記念サイト。",
+  description:
+    "ねずみ幸福論 1stシングル「その街であなたは...」配信記念サイト。",
   telephone: {
     heading: "今すぐお電話を！",
     prefix: "0120-",
@@ -99,7 +111,11 @@ export const site = {
     { name: "Bandcamp", url: "" },
   ],
   // サービスの「埋め込み」機能で取得した src のURLを設定（共有リンクではありません）。
-  embed: { url: "", title: "その街であなたは... — 音源プレイヤー", height: 352 },
+  embed: {
+    url: "",
+    title: "その街であなたは... — 音源プレイヤー",
+    height: 352,
+  },
 };
 export const popups: PopMessage[] = [
   {

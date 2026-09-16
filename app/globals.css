@@ -54,17 +54,6 @@ button:disabled {
   background: #30171b;
   border: 1px solid #835456;
 }
-.emergency-skip {
-  position: fixed;
-  right: 12px;
-  top: 12px;
-  z-index: 101;
-  padding: 8px 12px;
-  background: #c0beb2;
-  color: #222;
-  border: 2px outset #ddd;
-  font-size: 11px;
-}
 .collapse .intro-scene,
 .collapse .desktop-messages {
   animation: signal-loss var(--collapse-duration) linear forwards;

@@ -329,7 +329,9 @@
   background: repeating-linear-gradient(0deg, #a51f38 0 2px, #90192f 2px 4px);
   color: #fff2be;
   text-shadow: 2px 2px #450613;
-  box-shadow: 4px 5px 0 #080304, 0 0 20px #af25474d;
+  box-shadow:
+    4px 5px 0 #080304,
+    0 0 20px #af25474d;
   font:
     bold 25px "MS PMincho",
     "Yu Mincho",
@@ -340,7 +342,9 @@
 .enter-link:hover {
   background: #bc3049;
   color: #fff;
-  box-shadow: 4px 5px 0 #080304, 0 0 25px #cf345a80;
+  box-shadow:
+    4px 5px 0 #080304,
+    0 0 25px #cf345a80;
 }
 .enter-link:active {
   border-style: inset;
@@ -839,4 +843,15 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+.retro-ad.ramen {
+  border-color: #e6b95c;
+  background: #431815;
+}
+.ramen .ad-top {
+  background: #8f1d22;
+}
+.ramen .ad-headline {
+  background: #6b1b20;
+  color: #ffdf91;
 }

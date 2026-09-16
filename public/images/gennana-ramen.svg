@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="300" viewBox="0 0 450 300">
+<defs><pattern id="paper" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 1h4" stroke="#713c19" stroke-opacity=".13"/></pattern></defs>
+<path fill="#f2d58b" d="M0 0h450v300H0z"/><path fill="url(#paper)" d="M0 0h450v300H0z"/>
+<path fill="#9c181e" d="M0 0h450v52H0z"/>
+<text x="225" y="35" fill="#fff1bb" font-family="serif" font-size="24" font-weight="bold" text-anchor="middle" letter-spacing="9">深夜の空腹、救います。</text>
+<text x="225" y="98" fill="#6e1717" font-family="serif" font-size="39" font-weight="bold" text-anchor="middle">ゲンナナらーめん</text>
+<g fill="none" stroke="#8b583c" stroke-width="4" opacity=".6"><path d="M175 155c-20-18 20-25 0-42M221 150c-20-18 20-25 0-42M267 155c-20-18 20-25 0-42"/></g>
+<path d="M116 185h218c-12 58-57 78-109 78s-97-20-109-78" fill="#a82225" stroke="#581e18" stroke-width="4"/>
+<ellipse cx="225" cy="185" rx="109" ry="29" fill="#e7b360" stroke="#581e18" stroke-width="4"/>
+<g fill="none" stroke="#fff0a3" stroke-width="5"><path d="M150 180q20-16 40 0t40 0t40 0t35 0M147 192q20-16 40 0t40 0t40 0t35 0"/></g>
+<ellipse cx="276" cy="174" rx="20" ry="13" fill="#fff3d1"/><ellipse cx="276" cy="174" rx="9" ry="7" fill="#eab021"/>
+<path d="m166 168 20 9m-29-1 22 8m18-19 18 8" stroke="#477039" stroke-width="6"/>
+<path d="m288 158 95-34m-94 41 96-32" stroke="#59341c" stroke-width="5"/>
+<path d="M175 257h100v13H175z" fill="#71171c"/>
+<text x="225" y="289" fill="#6e1717" font-family="monospace" font-size="12" text-anchor="middle" letter-spacing="3">GENNANA RAMEN / NO SOUP, NO LIFE</text>
+</svg>

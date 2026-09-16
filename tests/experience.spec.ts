@@ -15,7 +15,7 @@ test("増殖して崩壊した後に音源を表示し、再体験できる", as
   expect(errors).toEqual([]);
 });
 
-test("モバイルで横スクロールがなく、演出中もスキップできる", async ({
+test("モバイルで横スクロールがなく、演出後に音源を表示する", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 375, height: 812 });
@@ -30,8 +30,8 @@ test("モバイルで横スクロールがなく、演出中もスキップで�
     fullPage: true,
   });
   await page.getByRole("button", { name: "入信する" }).click();
-  await page.locator(".emergency-skip").click();
-  await expect(page.locator(".release-page")).toBeVisible();
+  await expect(page.getByRole("button", { name: /スキップ/ })).toHaveCount(0);
+  await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -43,18 +43,20 @@ test("動きを減らす設定では演出を省略する", async ({ page }) => 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.getByRole("button", { name: "入信する" }).click();
-  await expect(page.locator(".release-page")).toBeVisible();
+  await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
   await expect(page.locator(".storm-popup")).toHaveCount(0);
 });
 
-test("デスクトップ表示とスキップ", async ({ page }) => {
+test("デスクトップの広告ボタンから演出を開始する", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
   await page.screenshot({
     path: "test-results/desktop-intro.png",
     fullPage: true,
   });
-  await page.getByRole("button", { name: "音源へスキップ" }).click();
+  await page.getByRole("button", { name: "今すぐ接続 ▶" }).click();
+  await expect(page.locator(".storm-popup").first()).toBeVisible();
+  await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
   await expect(page.getByText("ねずみ幸福論 · 配信準備中")).toBeVisible();
   await page.screenshot({
     path: "test-results/desktop-release.png",
@@ -74,3 +76,21 @@ test("再読み込みとアンカー付きURLでも先頭を表示し、ペー�
   await page.reload();
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 });
+
+for (const width of [375, 1440]) {
+  test(`広告から開始後はすべての開始ボタンが無効になる (${width}px)`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const ads = page.locator(".ad-action:visible");
+    await ads.first().click();
+    for (const button of await ads.all()) await expect(button).toBeDisabled();
+    await expect(page.locator(".enter-link")).toBeDisabled();
+    await expect(page.locator(".storm-popup").first()).toBeVisible();
+    await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
+    await page.getByRole("button", { name: "もう一度、勧誘される" }).click();
+    for (const button of await page.locator(".ad-action:visible").all())
+      await expect(button).toBeEnabled();
+  });
+}

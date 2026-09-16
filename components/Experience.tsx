@@ -39,9 +39,11 @@ function Popup({
 function RetroAd({
   ad,
   onOpen,
+  disabled,
 }: {
   ad: (typeof site.ads)[number];
   onOpen: () => void;
+  disabled: boolean;
 }) {
   return (
     <article className={`retro-ad ${ad.theme}`}>
@@ -57,11 +59,18 @@ function RetroAd({
       </div>
       <div className="ad-picture">
         <img src={ad.image} alt={ad.alt} width={ad.width} height={ad.height} />
-        <span className="ad-sticker">受信中!</span>
+        <span className="ad-sticker">
+          {ad.theme === "ramen" ? "営業中!" : "受信中!"}
+        </span>
       </div>
       <p className="ad-headline">{ad.headline}</p>
-      <button type="button" className="ad-action" onClick={onOpen}>
-        {ad.action}
+      <button
+        type="button"
+        className="ad-action"
+        onClick={onOpen}
+        disabled={disabled}
+      >
+        {disabled ? "救済に接続中…" : ad.action}
       </button>
       <p className="ad-note">{ad.note}</p>
     </article>
@@ -130,11 +139,9 @@ export default function Experience() {
       releaseHeading.current?.focus({ preventScroll: true });
   }, [phase]);
   function begin() {
+    if (phase !== "intro") return;
     setCount(0);
     setPhase(reduced ? "release" : "overload");
-  }
-  function skip() {
-    setPhase("release");
   }
   if (phase === "release")
     return (
@@ -297,7 +304,6 @@ export default function Experience() {
               </a>
               <a href="#diary">管理人の記憶</a>
               <a href="#guestbook">残された書き込み</a>
-              <button onClick={skip}>音源へスキップ</button>
               <hr />
               <p>現在の接続状態</p>
               <span className="connection">● 接続されています</span>
@@ -344,7 +350,13 @@ export default function Experience() {
                 <p className="join-note">{site.intro.note}</p>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[0] && <RetroAd ad={site.ads[0]} onOpen={begin} />}
+                {site.ads[0] && (
+                  <RetroAd
+                    ad={site.ads[0]}
+                    onOpen={begin}
+                    disabled={phase !== "intro"}
+                  />
+                )}
               </aside>
               <section className="old-section" id="news">
                 <h2>■ 更新履歴 / what's new</h2>
@@ -360,13 +372,28 @@ export default function Experience() {
                   ※ {site.releaseDate} 「{site.release}」配信予定。
                 </p>
               </section>
+              <aside className="inline-ad" aria-label="広告風の演出">
+                {site.ads[2] && (
+                  <RetroAd
+                    ad={site.ads[2]}
+                    onOpen={begin}
+                    disabled={phase !== "intro"}
+                  />
+                )}
+              </aside>
               <section className="old-section diary" id="diary">
                 <h2>■ 管理人の記憶 / fragment_001</h2>
                 <p>{site.homepage.diary}</p>
                 <span>続きを読むことはできません。</span>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[1] && <RetroAd ad={site.ads[1]} onOpen={begin} />}
+                {site.ads[1] && (
+                  <RetroAd
+                    ad={site.ads[1]}
+                    onOpen={begin}
+                    disabled={phase !== "intro"}
+                  />
+                )}
               </aside>
               <section className="old-section" id="guestbook">
                 <h2>■ 残された書き込み / read only</h2>
@@ -399,7 +426,12 @@ export default function Experience() {
       <aside className="desktop-messages" aria-label="広告風の演出">
         <p>ADVERTISEMENT / 受信中</p>
         {site.ads.map((ad) => (
-          <RetroAd ad={ad} key={ad.image} onOpen={begin} />
+          <RetroAd
+            ad={ad}
+            key={ad.image}
+            onOpen={begin}
+            disabled={phase !== "intro"}
+          />
         ))}
         <pre className="desktop-log">{site.transmission.join("\n")}</pre>
       </aside>
@@ -427,9 +459,6 @@ export default function Experience() {
               ? "SIGNAL LOST. 接続が失われました。"
               : `救済をダウンロード中… ${Math.round((count / site.animation.maxPopups) * 100)}%`}
           </div>
-          <button className="emergency-skip" onClick={skip}>
-            音源へスキップ ↗
-          </button>
         </>
       )}
       {phase === "collapse" && (
