@@ -36,7 +36,13 @@ function Popup({
     </article>
   );
 }
-function RetroAd({ ad }: { ad: (typeof site.ads)[number] }) {
+function RetroAd({
+  ad,
+  onOpen,
+}: {
+  ad: (typeof site.ads)[number];
+  onOpen: () => void;
+}) {
   return (
     <article className={`retro-ad ${ad.theme}`}>
       <div className="ad-top">
@@ -54,7 +60,9 @@ function RetroAd({ ad }: { ad: (typeof site.ads)[number] }) {
         <span className="ad-sticker">受信中!</span>
       </div>
       <p className="ad-headline">{ad.headline}</p>
-      <span className="ad-action">{ad.action}</span>
+      <button type="button" className="ad-action" onClick={onOpen}>
+        {ad.action}
+      </button>
       <p className="ad-note">{ad.note}</p>
     </article>
   );
@@ -336,7 +344,7 @@ export default function Experience() {
                 <p className="join-note">{site.intro.note}</p>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[0] && <RetroAd ad={site.ads[0]} />}
+                {site.ads[0] && <RetroAd ad={site.ads[0]} onOpen={begin} />}
               </aside>
               <section className="old-section" id="news">
                 <h2>■ 更新履歴 / what's new</h2>
@@ -358,7 +366,7 @@ export default function Experience() {
                 <span>続きを読むことはできません。</span>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[1] && <RetroAd ad={site.ads[1]} />}
+                {site.ads[1] && <RetroAd ad={site.ads[1]} onOpen={begin} />}
               </aside>
               <section className="old-section" id="guestbook">
                 <h2>■ 残された書き込み / read only</h2>
@@ -391,7 +399,7 @@ export default function Experience() {
       <aside className="desktop-messages" aria-label="広告風の演出">
         <p>ADVERTISEMENT / 受信中</p>
         {site.ads.map((ad) => (
-          <RetroAd ad={ad} key={ad.image} />
+          <RetroAd ad={ad} key={ad.image} onOpen={begin} />
         ))}
         <pre className="desktop-log">{site.transmission.join("\n")}</pre>
       </aside>

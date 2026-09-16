@@ -641,7 +641,7 @@
   }
 }
 
-/* 操作や外部遷移を行わない、昔の広告バナー風の装飾。 */
+/* 楽曲ページへ移動する広告バナー。「×」は演出用。 */
 .retro-ad {
   width: 100%;
   position: relative;
@@ -706,6 +706,7 @@
   background: repeating-linear-gradient(0deg, #790b2b 0 2px, #690725 2px 4px);
 }
 .ad-action {
+  width: calc(100% - 14px);
   display: block;
   margin: 0 7px;
   padding: 7px 2px;
