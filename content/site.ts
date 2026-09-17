@@ -8,6 +8,7 @@ export type PopMessage = {
   symbol: string;
 };
 export const site = {
+  url: "https://main.d3vxhtv9nfi3zu.amplifyapp.com/",
   band: "ねずみ幸福論",
   ads: [
     {

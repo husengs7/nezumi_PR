@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "og:capture": "node scripts/capture-social-preview.mjs",
     "dev": "next dev",
     "build": "next build",
     "typecheck": "tsc --noEmit"
