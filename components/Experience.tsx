@@ -162,14 +162,18 @@ export default function Experience() {
               {site.release}
             </h1>
             {site.embed.url ? (
-              <iframe
-                className="music-embed"
-                src={site.embed.url}
-                title={site.embed.title}
-                height={site.embed.height}
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+              <section className="release-listen" aria-label="音源の配信先">
+                <p className="release-listen-label">LISTEN / 配信先</p>
+                <iframe
+                  className="music-embed"
+                  src={site.embed.url}
+                  title={site.embed.title}
+                  width={440}
+                  height={site.embed.height}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+              </section>
             ) : (
               <div className="player-placeholder">
                 <span className="record" aria-hidden="true">
@@ -196,12 +200,12 @@ export default function Experience() {
                     {platform.name}
                     <span>聴く ↗</span>
                   </a>
-                ) : (
+                ) : !site.embed.url ? (
                   <div key={platform.name}>
                     {platform.name}
                     <span>COMING SOON</span>
                   </div>
-                ),
+                ) : null,
               )}
             </div>
           </div>

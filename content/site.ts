@@ -113,9 +113,9 @@ export const site = {
   ],
   // サービスの「埋め込み」機能で取得した src のURLを設定（共有リンクではありません）。
   embed: {
-    url: "",
-    title: "その街であなたは... — 音源プレイヤー",
-    height: 352,
+    url: "https://linkco.re/embed/P5umXPp6",
+    title: "その街であなたは... — サブスク・配信サービス一覧",
+    height: 420,
   },
 };
 export const popups: PopMessage[] = [

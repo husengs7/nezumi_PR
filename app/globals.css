@@ -254,9 +254,41 @@ button:disabled {
 .sound-bars {
   margin-left: auto;
 }
+.release-listen {
+  width: 100%;
+  max-width: 100%;
+  margin: 28px auto 0;
+  padding: 12px 0;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+}
+.release-listen-label {
+  margin: 0 0 12px;
+  color: #777;
+  font: 10px monospace;
+  letter-spacing: 2px;
+  text-align: left;
+}
 .music-embed {
+  display: block;
   width: 100%;
   border: 0;
+  background: white;
+}
+@media (max-width: 480px) {
+  .release-page {
+    padding: 40px 16px;
+  }
+  .release-header {
+    margin-bottom: 36px;
+  }
+  .release-info h1 {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+  .release-listen {
+    margin-top: 28px;
+  }
 }
 .platforms {
   margin: 25px 0;
