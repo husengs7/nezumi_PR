@@ -369,26 +369,13 @@
 .next-live {
   position: relative;
   z-index: 91;
-  width: 360px;
-  max-width: 100%;
-  margin: 30px auto 8px;
-  padding: 5px;
-  background: #0b090a;
-  border: 3px ridge #83545e;
-  box-shadow: 3px 4px 0 #000a;
-}
-.next-live > p {
-  margin: 0 0 5px;
-  padding: 5px 7px;
-  color: #f2dadd;
-  background: #681827;
-  font: 9px monospace;
-  text-align: left;
 }
 .next-live img {
   display: block;
-  width: 100%;
+  width: 360px;
+  max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 .old-section {
   margin: 20px 0;

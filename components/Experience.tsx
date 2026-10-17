@@ -372,15 +372,18 @@ export default function Experience() {
                 </button>
                 <p className="enter-caption">[ enter the sanctuary ]</p>
                 <p className="join-note">{site.intro.note}</p>
-                <aside className="next-live" aria-label="次回ライブのお知らせ">
-                  <p>NEXT LIVE / 次回ライブ</p>
-                  <img
-                    src={site.nextLive.image}
-                    alt={site.nextLive.alt}
-                    width={961}
-                    height={1200}
-                  />
-                </aside>
+              </section>
+              <section
+                className="old-section next-live"
+                aria-label="次回ライブのお知らせ"
+              >
+                <h2>■ NEXT LIVE / 次回ライブ</h2>
+                <img
+                  src={site.nextLive.image}
+                  alt={site.nextLive.alt}
+                  width={961}
+                  height={1200}
+                />
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
                 <XTimeline />
