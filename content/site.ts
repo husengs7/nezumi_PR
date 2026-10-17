@@ -10,18 +10,12 @@ export type PopMessage = {
 export const site = {
   url: "https://main.d3vxhtv9nfi3zu.amplifyapp.com/",
   band: "ねずみ幸福論",
+  xProfileUrl: "https://x.com/Rat_Happiness",
+  nextLive: {
+    image: "/images/HU0ZeGEbsAEASpf.jpeg",
+    alt: "2026年11月14日、柴崎modで開催されるu:phobia 12のライブフライヤー",
+  },
   ads: [
-    {
-      image: "/images/sky.jpg",
-      alt: "夕空と鉄塔の下に立つ人物",
-      width: 4032,
-      height: 3024,
-      label: "緊急受信",
-      headline: "あなたへの信号、届いています。",
-      action: "今すぐ接続 ▶",
-      note: "接続無料・いつでも受信中",
-      theme: "signal",
-    },
     {
       image: "/images/stdio.jpg",
       alt: "ねずみ幸福論の演奏風景",

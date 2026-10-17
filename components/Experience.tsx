@@ -76,6 +76,26 @@ function RetroAd({
     </article>
   );
 }
+function XTimeline() {
+  return (
+    <div className="x-timeline">
+      <p>X / SIGNAL FEED</p>
+      <a
+        className="x-profile-card"
+        href={site.xProfileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/images/rat-happiness-x.png"
+          alt="ねずみ幸福論のXプロフィール"
+          width={600}
+          height={720}
+        />
+      </a>
+    </div>
+  );
+}
 export default function Experience() {
   const [phase, setPhase] = useState<Phase>("intro");
   const [count, setCount] = useState(0);
@@ -352,15 +372,18 @@ export default function Experience() {
                 </button>
                 <p className="enter-caption">[ enter the sanctuary ]</p>
                 <p className="join-note">{site.intro.note}</p>
+                <aside className="next-live" aria-label="次回ライブのお知らせ">
+                  <p>NEXT LIVE / 次回ライブ</p>
+                  <img
+                    src={site.nextLive.image}
+                    alt={site.nextLive.alt}
+                    width={961}
+                    height={1200}
+                  />
+                </aside>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[0] && (
-                  <RetroAd
-                    ad={site.ads[0]}
-                    onOpen={begin}
-                    disabled={phase !== "intro"}
-                  />
-                )}
+                <XTimeline />
               </aside>
               <section className="old-section" id="news">
                 <h2>■ 更新履歴 / what's new</h2>
@@ -377,9 +400,9 @@ export default function Experience() {
                 </p>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[2] && (
+                {site.ads[1] && (
                   <RetroAd
-                    ad={site.ads[2]}
+                    ad={site.ads[1]}
                     onOpen={begin}
                     disabled={phase !== "intro"}
                   />
@@ -391,9 +414,9 @@ export default function Experience() {
                 <span>続きを読むことはできません。</span>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
-                {site.ads[1] && (
+                {site.ads[0] && (
                   <RetroAd
-                    ad={site.ads[1]}
+                    ad={site.ads[0]}
                     onOpen={begin}
                     disabled={phase !== "intro"}
                   />
@@ -429,6 +452,7 @@ export default function Experience() {
       </div>
       <aside className="desktop-messages" aria-label="広告風の演出">
         <p>ADVERTISEMENT / 受信中</p>
+        <XTimeline />
         {site.ads.map((ad) => (
           <RetroAd
             ad={ad}

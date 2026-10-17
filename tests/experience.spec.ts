@@ -47,17 +47,27 @@ test("動きを減らす設定では演出を省略する", async ({ page }) => 
   await expect(page.locator(".storm-popup")).toHaveCount(0);
 });
 
-test("デスクトップの広告ボタンから演出を開始する", async ({ page }) => {
+test("Xプロフィール画像を表示し、デスクトップの広告ボタンから演出を開始する", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
   await page.screenshot({
     path: "test-results/desktop-intro.png",
     fullPage: true,
   });
-  await page.getByRole("button", { name: "今すぐ接続 ▶" }).click();
+  await expect(page.locator(".x-timeline:visible")).toBeVisible();
+  await expect(page.locator(".x-profile-card:visible img")).toHaveAttribute(
+    "src",
+    "/images/rat-happiness-x.png",
+  );
+  await page.getByRole("button", { name: "音量を上げて確認 ▶" }).click();
   await expect(page.locator(".storm-popup").first()).toBeVisible();
   await expect(page.locator(".release-page")).toBeVisible({ timeout: 15000 });
-  await expect(page.locator(".music-embed")).toHaveAttribute("src", "https://linkco.re/embed/P5umXPp6");
+  await expect(page.locator(".music-embed")).toHaveAttribute(
+    "src",
+    "https://linkco.re/embed/P5umXPp6",
+  );
   await page.screenshot({
     path: "test-results/desktop-release.png",
     fullPage: true,
