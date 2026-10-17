@@ -14,6 +14,7 @@ export const site = {
   nextLive: {
     image: "/images/HU0ZeGEbsAEASpf.jpeg",
     alt: "2026年11月14日、柴崎modで開催されるu:phobia 12のライブフライヤー",
+    url: "https://shibasakimod.com/schedule/20261114lt",
   },
   ads: [
     {

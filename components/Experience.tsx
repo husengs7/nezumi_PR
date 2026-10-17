@@ -378,12 +378,18 @@ export default function Experience() {
                 aria-label="次回ライブのお知らせ"
               >
                 <h2>■ NEXT LIVE / 次回ライブ</h2>
-                <img
-                  src={site.nextLive.image}
-                  alt={site.nextLive.alt}
-                  width={961}
-                  height={1200}
-                />
+                <a
+                  href={site.nextLive.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={site.nextLive.image}
+                    alt={site.nextLive.alt}
+                    width={961}
+                    height={1200}
+                  />
+                </a>
               </section>
               <aside className="inline-ad" aria-label="広告風の演出">
                 <XTimeline />

@@ -370,6 +370,9 @@
   position: relative;
   z-index: 91;
 }
+.next-live > a {
+  display: block;
+}
 .next-live img {
   display: block;
   width: 360px;
